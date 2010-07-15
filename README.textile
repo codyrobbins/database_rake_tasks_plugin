@@ -58,10 +58,8 @@ rake user-f:name
 
 h3. @db:remigrate@
 
-
+TODO.
 
 h2. Copyright
 
-Copyright 2006-2010 Sakuzaku, LLC. Released under the MIT license.
-
-http://sakuzaku.com
+Copyright 2006–2010 "Sakuzaku, LLC":http://sakuzaku.com. Released under the MIT license.
