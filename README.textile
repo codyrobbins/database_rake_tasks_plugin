@@ -1,0 +1,67 @@
+h1. Rake Tasks Plugin for Rails
+
+These are some useful Rake tasks that fill some holes in Rails.
+
+h2. Tasks
+
+h3. Testing convenience tasks
+
+Dynamic tasks to automatically run specific unit and functional tests without a lot of typing. These tasks are a big time-saver.
+
+h4. Running all tests for a model or controller
+
+To run all unit tests for a particular model and/or all functional tests for a particular controller, just do
+
+bc. rake TARGET
+
+where @TARGET@ is the name of the model or controller. If there are both a model and controller with the given name, the tests for both are run. Example:
+
+bc. # The following is equivalent to:
+# ruby test/unit/user_test.rb ; ruby test/functional/user_controller_test.rb
+rake user
+
+To run only a unit or functional test (but not both) for a model or controller:
+
+bc. rake TARGET-TYPE
+
+Where @TARGET@ is the same as above, and @TYPE@ is either the character @u@ (for the unit test) or @f@ (for the functional test). Example:
+
+bc.. # The following is equivalent to:
+# ruby test/unit/user_test.rb
+rake user-u
+
+# The following is equivalent to:
+# ruby test/functional/user_controller_test.rb
+rake user-f
+
+h4. Running a specific test only
+
+To run a specific individual unit or functional test for a model or controller, just do
+
+bc. rake TARGET:TEST
+
+where @TARGET@ is the name of the model or controller, and @TEST@ is the name of the particular test to run. Example:
+
+bc. # The following is equivalent to:
+# ruby test/unit/user_test.rb -n /^test_name/ ; ruby test/functional/user_controller_test.rb -n /^test_name/
+rake user:name
+
+If both a unit and functional test for exist with the given name, then both will be run. To restrict the specific individual test that is run, you can use the same syntax as above:
+
+bc.. # The following is equivalent to:
+# ruby test/unit/user_test.rb -n /^test_name/
+rake user-u:name
+
+# The following is equivalent to:
+# ruby test/functional/user_controller_test.rb -n /^test_name/
+rake user-f:name
+
+h3. @db:remigrate@
+
+
+
+h2. Copyright
+
+Copyright 2006-2010 Sakuzaku, LLC. Released under the MIT license.
+
+http://sakuzaku.com
