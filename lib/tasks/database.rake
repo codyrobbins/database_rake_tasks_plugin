@@ -93,32 +93,32 @@ namespace(:db) do
     Sakuzaku::DatabaseRakeTasks.purge
   end
 
-  desc("Drops the current environment's database and recreates it.")
+  desc("Drops and then recreates the current environment's database.")
   task(:recreate => :environment) do
     Sakuzaku::DatabaseRakeTasks.recreate
   end
 
   namespace(:recreate) do
-    desc("Drops all environments' databases and recreates them.")
+    desc("Drops and then recreates all databases.")
     task(:all => :environment) do
       Sakuzaku::DatabaseRakeTasks.recreate_all
     end
   end
 
   namespace(:migrate) do
-    desc('Migrate all databases through scripts in db/migrate. Target specific version with VERSION=x. Turn off output with VERBOSE=false.')
+    desc('Migrates all databases. Target specific version with VERSION=x. Turn off output with VERBOSE=false.')
     task(:all => :environment) do
       Sakuzaku::DatabaseRakeTasks.migrate_all
     end
 
     namespace(:reset) do
-      desc('Resets all your databases using your migrations.')
+      desc('Recreates all databases by running all migrations.')
       task(:all => :environment) do
         Sakuzaku::DatabaseRakeTasks.reset_all
       end
     end
 
-    desc("Tests any uncommitted migrations by remigrating the current environment's database, migrating all uncommitted migrations down, and then migrating forward again.")
+    desc("Tests any uncommitted migrations by resetting the current environment's database, migrating all uncommitted migrations down, and then migrating up again.")
     task(:verify => :environment) do
       Sakuzaku::DatabaseRakeTasks.verify
     end

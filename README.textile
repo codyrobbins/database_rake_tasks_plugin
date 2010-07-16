@@ -1,6 +1,6 @@
 h1. Database Rake Tasks Plugin for Rails
 
-TODO: Describe.
+These are some additional database-related Rake tasks for Rails that fill in some holes left by the built-in Rails tasks. These are all things that I've had to do enough at one time or another that I felt it necessary to write tasks for them.
 
 h2. Installation
 
@@ -10,19 +10,39 @@ h2. Usage
 
 h3. db:purge
 
+Removes all the data from the current environment's database, but does not drop the database itself. This task is the same as @db:test:purge@, but operates on the current environment's database.
+
 h3. db:recreate
 
-Difference from db:reset is that doesn't use schema.rb, just creates it.
+Drops and then recreates the current environment's database. This task is equivalent to running @db:drop@ and @db:create@. The distinction from @db:reset@ is that doesn't use @schema.rb@ to recreate the database, but rather just creates a new blank database.
 
 h3. db:recreate:all
 
+Drops and then recreates all databases. This task is the same as @db:recreate@, but operates on all databases.
+
 h3. db:migrate:all
+
+Migrates all databases. This task is the same as @db:migrate@, but operates on all databases. You can target a specific version with @VERSION=x@, and turn off output with @VERBOSE=false@.
 
 h3. db:migrate:reset:all
 
+Recreates all databases by running all migrations. This task is the same as @db:migrate:reset@, but operates on all databases.
+
 h3. db:migrate:verify
 
+Tests any uncommitted migrations by resetting the current environment's database, migrating all uncommitted migrations down, and then migrating up again. This task is useful to doing a final check before committing to make sure that all migrations you are adding run both up and down without any problems.
+
 h3. db:fixtures:export
+
+Create YAML test fixtures from the data in the current environment’s database. A separate fixtures file will be created in @test/fixtures/ENVIRONMENT@ for each database table, with each individual fixture given a numeric index. This is a good way to avoid having to type a lot of YAML if create your test fixtures directly in the database first, or if you want to create fixtures from some production data.
+
+h2. Compatability
+
+* These tasks have been tested with Rails 2.3.8 as of 2010-07-15.
+
+h2. Support
+
+Please report any bugs, view revision history, or add to the wiki on this project’s "GitHub page":http://github.com/codyrobbins/database_rake_tasks_plugin.
 
 h2. Copyright
 
