@@ -1,6 +1,6 @@
 h1. Database Rake Tasks Plugin for Rails
 
-These are some additional database-related Rake tasks for Rails that fill in some holes left by the built-in Rails tasks. These are all things that I've had to do enough at one time or another that I felt it necessary to write tasks for them.
+These are some additional database-related Rake tasks for Rails that fill in some holes left by the built-in Rails tasks. These are all things that I’ve had to do enough at one time or another that I felt it necessary to write tasks for them.
 
 h2. Installation
 
@@ -10,11 +10,11 @@ h2. Usage
 
 h3. db:purge
 
-Removes all the data from the current environment's database, but does not drop the database itself. This task is the same as @db:test:purge@, but operates on the current environment's database.
+Removes all the data from the current environment’s database, but does not drop the database itself. This task is the same as @db:test:purge@, but operates on the current environment’s database.
 
 h3. db:recreate
 
-Drops and then recreates the current environment's database. This task is equivalent to running @db:drop@ and @db:create@. The distinction from @db:reset@ is that doesn't use @schema.rb@ to recreate the database, but rather just creates a new blank database.
+Drops and then recreates the current environment’s database. This task is equivalent to running @db:drop@ and @db:create@. The distinction from @db:reset@ is that doesn’t use @schema.rb@ to recreate the database, but rather just creates a new blank database.
 
 h3. db:recreate:all
 
@@ -30,7 +30,7 @@ Recreates all databases by running all migrations. This task is the same as @db:
 
 h3. db:migrate:verify
 
-Tests any uncommitted migrations by resetting the current environment's database, migrating all uncommitted migrations down, and then migrating up again. This task is useful to doing a final check before committing to make sure that all migrations you are adding run both up and down without any problems.
+Tests any uncommitted migrations by resetting the current environment’s database, migrating all uncommitted migrations down, and then migrating up again. This task is useful to doing a final check before committing to make sure that all migrations you are adding run both up and down without any problems.
 
 h3. db:fixtures:export
 
